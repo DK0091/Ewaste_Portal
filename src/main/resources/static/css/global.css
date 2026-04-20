@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --bg-dark: #0f172a;
+    --card-dark: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .brand-font {
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+    background: var(--card-dark);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    color: white;
+}
+
+.glass-panel-light {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+}
+
+/* Custom Gradients */
+.bg-gradient-success {
+    background: var(--primary-gradient) !important;
+}
+
+.text-gradient {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Animations */
+.hover-float {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-float:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9; 
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1; 
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8; 
+}
+
+/* Table Enhancements */
+.table-modern {
+    border-spacing: 0 10px;
+    border-collapse: separate;
+}
+.table-modern tbody tr {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    border-radius: 8px;
+    transition: all 0.2s;
+    background: white;
+}
+.table-modern tbody tr:hover {
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.table-modern td, .table-modern th {
+    border: none;
+    padding: 16px;
+    vertical-align: middle;
+}
+.table-modern td:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+.table-modern td:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+
+/* Status Dots */
+.status-dot {
+    height: 8px;
+    width: 8px;
+    background-color: currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
