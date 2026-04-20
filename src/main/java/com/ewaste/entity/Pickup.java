@@ -35,7 +35,7 @@ public class Pickup {
     private List<EwasteItem> items = new ArrayList<>();
 
     public Pickup() {
-        this.status = "REQUESTED";
+        this.status = "Scheduled";
     }
 
     // Getters and Setters

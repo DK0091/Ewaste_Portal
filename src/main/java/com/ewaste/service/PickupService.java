@@ -30,7 +30,7 @@ public class PickupService {
         pickup.setCitizen(citizen);
         pickup.setAddress(address);
         pickup.setPickupDate(date);
-        pickup.setStatus("REQUESTED");
+        pickup.setStatus("Scheduled");
 
         pickup = pickupRepository.save(pickup);
 
@@ -62,7 +62,7 @@ public class PickupService {
     
     @Transactional(readOnly = true)
     public List<Pickup> getRequestedPickups() {
-        return pickupRepository.findByStatus("REQUESTED");
+        return pickupRepository.findByStatusAndRecyclerIsNull("Scheduled");
     }
 
     @Transactional(readOnly = true)
@@ -84,7 +84,7 @@ public class PickupService {
         Pickup pickup = getPickupById(pickupId);
         if (pickup != null) {
             pickup.setRecycler(recycler);
-            pickup.setStatus("ASSIGNED");
+            pickup.setStatus("Assigned");
             pickupRepository.save(pickup);
         }
     }

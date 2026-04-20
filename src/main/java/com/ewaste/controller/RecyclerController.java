@@ -77,7 +77,7 @@ public class RecyclerController {
         Pickup pickup = pickupService.getPickupById(pickupId);
         
         if (pickup != null && pickup.getRecycler().getId().equals(recycler.getId())) {
-            processingService.updateProcessingStage(pickupId, recycler, "CERTIFIED", "Certificate successfully issued by Recycler");
+            processingService.updateProcessingStage(pickupId, recycler, "Certificate Issued", "Certificate successfully issued by Recycler");
             session.setAttribute("flashMsg", "Certificate generated!");
         }
         return "redirect:/recycler/dashboard";

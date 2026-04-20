@@ -29,14 +29,14 @@ public class AdminController {
         
         Double totalOverallWeight = 0.0;
         for (Pickup p : pickups) {
-            if ("CERTIFIED".equals(p.getStatus()) && !p.getItems().isEmpty() && p.getItems().get(0).getWeight() != null) {
+            if ("Certificate Issued".equals(p.getStatus()) && !p.getItems().isEmpty() && p.getItems().get(0).getWeight() != null) {
                 totalOverallWeight += p.getItems().get(0).getWeight();
             }
         }
 
-        long requested = pickups.stream().filter(p -> "REQUESTED".equals(p.getStatus())).count();
-        long processing = pickups.stream().filter(p -> p.getStatus().equals("ASSIGNED") || p.getStatus().equals("COLLECTED") || p.getStatus().equals("SORTING") || p.getStatus().equals("SHREDDING")).count();
-        long certified = pickups.stream().filter(p -> "CERTIFIED".equals(p.getStatus())).count();
+        long requested = pickups.stream().filter(p -> "Scheduled".equals(p.getStatus()) && p.getRecycler() == null).count();
+        long processing = pickups.stream().filter(p -> p.getStatus().equals("Assigned") || p.getStatus().equals("Collected") || p.getStatus().equals("Sorting") || p.getStatus().equals("Shredding") || p.getStatus().equals("Completed")).count();
+        long certified = pickups.stream().filter(p -> "Certificate Issued".equals(p.getStatus())).count();
 
         model.addAttribute("users", users);
         model.addAttribute("pickups", pickups);

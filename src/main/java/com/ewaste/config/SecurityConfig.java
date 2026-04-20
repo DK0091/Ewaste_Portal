@@ -41,7 +41,7 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 .dispatcherTypeMatchers(jakarta.servlet.DispatcherType.FORWARD, jakarta.servlet.DispatcherType.ERROR).permitAll()
-                .requestMatchers("/register", "/css/**", "/login", "/h2-console/**", "/WEB-INF/jsp/**").permitAll()
+                .requestMatchers("/", "/register", "/css/**", "/login", "/h2-console/**", "/WEB-INF/jsp/**").permitAll()
                 .requestMatchers("/citizen/**").hasAuthority("ROLE_CITIZEN")
                 .requestMatchers("/recycler/**").hasAuthority("ROLE_RECYCLER")
                 .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")

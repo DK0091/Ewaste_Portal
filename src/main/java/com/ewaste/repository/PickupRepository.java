@@ -13,7 +13,8 @@ public interface PickupRepository extends JpaRepository<Pickup, Long> {
     List<Pickup> findByCitizen(User citizen);
     List<Pickup> findByRecycler(User recycler);
     List<Pickup> findByStatus(String status);
+    List<Pickup> findByStatusAndRecyclerIsNull(String status);
     
-    @Query("SELECT COALESCE(SUM(i.weight), 0) FROM Pickup p JOIN p.items i WHERE p.status = 'CERTIFIED'")
+    @Query("SELECT COALESCE(SUM(i.weight), 0) FROM Pickup p JOIN p.items i WHERE p.status = 'Certificate Issued'")
     Double getTotalEwasteCollectedWeight();
 }
