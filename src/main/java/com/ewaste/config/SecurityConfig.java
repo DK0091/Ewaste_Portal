@@ -62,7 +62,8 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
             )
-            .csrf(csrf -> csrf.disable()); 
+            .csrf(csrf -> csrf.disable())
+            .exceptionHandling(ex -> ex.accessDeniedPage("/error"));
 
         http.headers(headers -> headers.frameOptions(frame -> frame.disable()));
         return http.build();

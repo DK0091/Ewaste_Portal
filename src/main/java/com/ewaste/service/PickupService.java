@@ -4,6 +4,7 @@ import com.ewaste.entity.Pickup;
 import com.ewaste.entity.User;
 import com.ewaste.repository.ItemJdbcRepository;
 import com.ewaste.repository.PickupRepository;
+import com.ewaste.util.PickupStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +31,7 @@ public class PickupService {
         pickup.setCitizen(citizen);
         pickup.setAddress(address);
         pickup.setPickupDate(date);
-        pickup.setStatus("Scheduled");
+        pickup.setStatus(PickupStatus.SCHEDULED);
 
         pickup = pickupRepository.save(pickup);
 
@@ -62,7 +63,7 @@ public class PickupService {
     
     @Transactional(readOnly = true)
     public List<Pickup> getRequestedPickups() {
-        return pickupRepository.findByStatusAndRecyclerIsNull("Scheduled");
+        return pickupRepository.findByStatusAndRecyclerIsNull(PickupStatus.SCHEDULED);
     }
 
     @Transactional(readOnly = true)
@@ -84,8 +85,18 @@ public class PickupService {
         Pickup pickup = getPickupById(pickupId);
         if (pickup != null) {
             pickup.setRecycler(recycler);
-            pickup.setStatus("Assigned");
+            pickup.setStatus(PickupStatus.ASSIGNED);
             pickupRepository.save(pickup);
         }
+    }
+
+    /** Total weight processed by a recycler across certified pickups */
+    @Transactional(readOnly = true)
+    public double getRecyclerTotalWeight(User recycler) {
+        return pickupRepository.findByRecycler(recycler).stream()
+            .filter(p -> PickupStatus.CERTIFICATE_ISSUED.equals(p.getStatus()))
+            .flatMap(p -> p.getItems().stream())
+            .mapToDouble(i -> i.getWeight() != null ? i.getWeight() : 0)
+            .sum();
     }
 }

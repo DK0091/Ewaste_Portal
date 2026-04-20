@@ -145,6 +145,11 @@ h1, h2, h3, h4, h5, h6, .brand-font {
     box-shadow: 2px 0 10px rgba(0,0,0,0.05);
 }
 
+/* 5-column grid for admin KPI row */
+@media (min-width: 1200px) {
+    .col-xl-2-4 { flex: 0 0 20%; max-width: 20%; }
+}
+
 /* ============================================
    DARK THEME
    Applied via [data-theme="dark"] on <html>

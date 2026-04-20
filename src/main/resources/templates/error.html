@@ -7,22 +7,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" th:href="@{/css/global.css}">
+    <script th:src="@{/js/theme.js}"></script>
 </head>
-<body class="bg-light d-flex align-items-center justify-content-center" style="min-height: 100vh;">
-
-<div class="text-center fade-in">
-    <i class="fa-solid fa-triangle-exclamation text-warning text-opacity-75 mb-4" style="font-size: 6rem;"></i>
-    <h1 class="display-3 fw-bold brand-font text-dark mb-2">Oops!</h1>
-    <h4 class="text-muted mb-4">Something went wrong or the page was not found.</h4>
-    
-    <div class="mb-5">
-        <p class="text-danger small bg-danger bg-opacity-10 d-inline-block px-3 py-2 rounded-3" th:if="${message}" th:text="${message}"></p>
+<body class="bg-light d-flex align-items-center justify-content-center" style="min-height:100vh;">
+<div class="text-center px-4" style="max-width:520px;">
+    <div class="mb-4">
+        <i class="fa-solid fa-triangle-exclamation fa-4x text-warning mb-3"></i>
+        <h1 class="brand-font fw-bold fs-2" th:text="${status != null} ? 'Error ' + ${status} : 'Oops!'">Oops!</h1>
+        <p class="text-muted fs-5 mt-2"
+           th:text="${message != null} ? ${message} : 'Something went wrong or you do not have permission to access this page.'">
+            Something went wrong or you do not have permission to access this page.
+        </p>
     </div>
-
-    <a th:href="@{/}" class="btn btn-primary btn-lg rounded-pill px-5 shadow-sm hover-float fw-bold">
-        <i class="fa-solid fa-house me-2"></i> Return Home
-    </a>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="javascript:history.back()" class="btn btn-outline-secondary rounded-pill px-4">
+            <i class="fa-solid fa-arrow-left me-1"></i> Go Back
+        </a>
+        <a th:href="@{/}" class="btn btn-primary rounded-pill px-4">
+            <i class="fa-solid fa-house me-1"></i> Home
+        </a>
+    </div>
+    <p class="text-muted small mt-5 opacity-50">EcoRecycle Portal &mdash; Error Page</p>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

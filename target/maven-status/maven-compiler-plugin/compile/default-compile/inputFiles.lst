@@ -24,4 +24,5 @@ D:\ewaste_portal\src\main\java\com\ewaste\controller\CitizenController.java
 D:\ewaste_portal\src\main\java\com\ewaste\config\LoggingInterceptor.java
 D:\ewaste_portal\src\main\java\com\ewaste\entity\EwasteItem.java
 D:\ewaste_portal\src\main\java\com\ewaste\entity\User.java
+D:\ewaste_portal\src\main\java\com\ewaste\util\PickupStatus.java
 D:\ewaste_portal\src\main\java\com\ewaste\service\NotificationService.java
