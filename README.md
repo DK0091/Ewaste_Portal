@@ -2,7 +2,7 @@
 
 A full-stack **Spring Boot Enterprise Application** that enables citizens to schedule e-waste pickups, recyclers to process waste through defined stages, and administrators to monitor system activity and environmental impact.
 
----
+----
 
 ## 🚀 Project Overview
 
