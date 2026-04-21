@@ -205,7 +205,7 @@ http://localhost:8080
 ## 👨‍💻 Author
 
 **Darshan Kale**
-B.Tech Computer Science
+
 
 ---
 
